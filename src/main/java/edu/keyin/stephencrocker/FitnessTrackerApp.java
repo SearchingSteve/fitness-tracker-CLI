@@ -2,7 +2,17 @@ package edu.keyin.stephencrocker;
 
 import java.util.Scanner;
 
+/**
+ * The FitnessTrackerApp class provides a user interface for managing workouts and fitness goals.
+ * Users can add workouts, set goals, check goal status, display workouts and goals, and exit the program.
+ */
 public class FitnessTrackerApp {
+
+    /**
+     * The main method initializes the FitnessTracker application and provides a menu for user interaction.
+     *
+     * @param args Command-line arguments (not used in this application).
+     */
     public static void main(String[] args) {
         FitnessTracker tracker = new FitnessTracker();
         Scanner scanner = new Scanner(System.in);
@@ -16,32 +26,35 @@ public class FitnessTrackerApp {
             System.out.println("3. Check Goal Status");
             System.out.println("4. Display Workouts");
             System.out.println("5. Display Goals");
-            System.out.println("6. Exit");
-            System.out.print("Please choose an option (1-6): ");
+            System.out.println("6. Get Total Calories Burned");
+            System.out.println("7. Get Total Workout Minutes");
+            System.out.println("8. Exit");
+            System.out.print("Please choose an option (1-8): ");
 
+            // Validate user input
             if (!scanner.hasNextInt()) {
-                System.out.println("\nInvalid input. Please enter a number between 1 and 6.");
-                scanner.next(); // Consume invalid input
+                System.out.println("\nInvalid input. Please enter a number between 1 and 8.");
+                scanner.next();
                 continue;
             }
 
-            int choice = scanner.nextInt(); // Get user input
+            int choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
-                    // Add Workout
+                    // Add a new workout
                     System.out.print("\nEnter workout name: ");
                     String name = scanner.next();
                     System.out.print("Enter workout duration in minutes: ");
                     while (!scanner.hasNextInt()) {
                         System.out.print("Invalid input. Please enter a valid number for duration: ");
-                        scanner.next(); // Consume invalid input
+                        scanner.next();
                     }
                     int duration = scanner.nextInt();
                     System.out.print("Enter calories burned: ");
                     while (!scanner.hasNextInt()) {
                         System.out.print("Invalid input. Please enter a valid number for calories: ");
-                        scanner.next(); // Consume invalid input
+                        scanner.next();
                     }
                     int caloriesBurned = scanner.nextInt();
 
@@ -51,9 +64,9 @@ public class FitnessTrackerApp {
                     break;
 
                 case 2:
-                    // Add Goal
+                    // Add a new goal
                     System.out.print("\nEnter goal description: ");
-                    scanner.nextLine(); // Consume leftover newline
+                    scanner.nextLine(); // Clear the newline character
                     String description = scanner.nextLine();
 
                     String metric;
@@ -69,23 +82,23 @@ public class FitnessTrackerApp {
                     System.out.print("Enter target value: ");
                     while (!scanner.hasNextInt()) {
                         System.out.print("Invalid input. Please enter a valid number for target value: ");
-                        scanner.next(); // Consume invalid input
+                        scanner.next();
                     }
                     int targetVal = scanner.nextInt();
 
                     Goal goal = new Goal(description, metric, targetVal);
                     tracker.addGoal(goal);
                     System.out.println("\nGoal added: " + description + ", Target: " + targetVal + " " + metric);
-                    tracker.updateGoals(); // Update the goal status after adding it
+                    tracker.updateGoals();
                     break;
 
                 case 3:
-                    // Check Goal Status
+                    // Check goal status
                     if (tracker.getGoals().isEmpty()) {
                         System.out.println("\nNo goals have been added yet.");
                     } else {
                         System.out.println("\nEnter the goal description to check status: ");
-                        scanner.nextLine();  // Consume the newline left over
+                        scanner.nextLine();
                         String goalDescription = scanner.nextLine();
 
                         Goal foundGoal = null;
@@ -109,20 +122,34 @@ public class FitnessTrackerApp {
                     }
                     break;
 
-                // Display Workouts
                 case 4:
+                    // Display all workouts
                     tracker.displayWorkouts();
                     break;
+
                 case 5:
+                    // Display all goals
                     tracker.displayGoals();
                     break;
+
                 case 6:
+                    // Get total calories burned
+                    System.out.println("\nTotal calories burned: " + tracker.getTotalCaloriesBurned());
+                    break;
+
+                case 7:
+                    // Get total workout minutes
+                    System.out.println("\nTotal workout minutes: " + tracker.getTotalWorkoutMinutes());
+                    break;
+
+                case 8:
+                    // Exit the application
                     running = false;
                     System.out.println("\nExiting the program. Goodbye!");
                     break;
 
                 default:
-                    System.out.println("\nInvalid option. Please choose between 1 and 6.");
+                    System.out.println("\nInvalid option. Please choose between 1 and 8.");
             }
         }
 
