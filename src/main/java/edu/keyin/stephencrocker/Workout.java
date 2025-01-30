@@ -2,20 +2,20 @@ package edu.keyin.stephencrocker;
 
 import java.time.LocalDateTime;
 public class Workout {
-    private String type;
+    private String name;
     private int duration;
     private int caloriesBurned;
     private LocalDateTime timestamp;
 
-    public Workout(String type, int duration, int caloriesBurned) {
-        this.type = type;
+    public Workout(String name, int duration, int caloriesBurned) {
+        this.name = name;
         this.duration = duration;
         this.caloriesBurned = caloriesBurned;
         this.timestamp = LocalDateTime.now();
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
     public int getDuration() {
         return duration;

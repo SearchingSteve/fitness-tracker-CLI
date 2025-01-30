@@ -25,8 +25,35 @@ public class FitnessTracker {
         return new ArrayList<>(workouts);
     }
 
+    public void displayWorkouts() {
+        if (workouts.isEmpty()) {
+            System.out.println("No workouts to display.");
+        } else {
+            for (Workout workout : workouts) {
+                System.out.println("Workout: " + workout.getName() +
+                        ", Duration: " + workout.getDuration() + " minutes" +
+                        ", Calories: " + workout.getCaloriesBurned() +
+                        ", Timestamp: " + workout.getTimestamp());
+            }
+        }
+    }
+
+
     public List<Goal> getGoals() {
         return new ArrayList<>(goals);
+    }
+
+    public void displayGoals() {
+        if (goals.isEmpty()) {
+            System.out.println("No goals to display.");
+        }
+        else{
+            for (Goal goal : goals) {
+                System.out.println("Goal: " + goal.getDescription() +
+                        ", Target Goal: " + goal.getTargetVal() + " " +goal.getMetric() +
+                        ", Goal Achieved: " + goal.isAchieved());
+            }
+        }
     }
 
     public void updateGoals() {
