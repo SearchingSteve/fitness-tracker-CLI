@@ -87,4 +87,8 @@ The project uses GitHub Actions to automatically run tests on every push. The wo
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is provided for personal use only. Redistribution, modification, or commercial use in any form is strictly prohibited without prior written permission from the author.
+For detailed license terms, refer to the [LICENSE](./LICENSE.md) file.
+
+## Author
+[SearchingSteve](https://github.com/SearchingSteve)
